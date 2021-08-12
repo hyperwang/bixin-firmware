@@ -2,6 +2,7 @@ name: OneKey Mini Prebuild
 on: [push]
 jobs:
   style-prebuild:
+    container: registry.gitlab.com/satoshilabs/trezor/trezor-firmware/trezor-firmware-env.nix
     runs-on: mini
     steps:
       - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
