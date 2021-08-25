@@ -2700,15 +2700,24 @@ void layouKeyValue(int y, const char *desc, const char *value) {
 
 void layoutDeviceParameters(int num) {
   (void)num;
+#if !EMULATOR
   const struct font_desc *font = find_cur_font();
+#endif
+
 #if !ONEKEY_MINI
+#if !EMULATOR
   char *se_version = NULL;
   char *se_sn;
-  int x = 0;
 #endif
+#endif
+
+#if !EMULATOR
+  int x = 0;
   int y = 0;
+#endif
   int index = 0;
   uint8_t key = KEY_NULL;
+
 #if ONEKEY_MINI
   char *serial;
   uint8_t jedec_id;
@@ -2718,7 +2727,9 @@ void layoutDeviceParameters(int num) {
 #endif
 
 refresh_menu:
+#if !EMULATOR
   y = 9;
+#endif
   oledClear_ex();
   switch (index) {
     case 0:
